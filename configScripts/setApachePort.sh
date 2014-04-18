@@ -27,6 +27,10 @@
 # CAN CORRUPT YOUR APACHE2 WEB SERVER CONFIGURATION
 # 
 #*******************************************************************************
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root" 1>&2
+   exit 1
+fi
 alreadySet=`grep \*:8080 /etc/apache2/ports.conf | wc -l`
 if [ $alreadySet -ne 0 ]; then
     echo "/etc/apache2/ports.conf already set to port 8080"

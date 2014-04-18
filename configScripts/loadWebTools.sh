@@ -17,6 +17,10 @@
 # 
 #  https://www.gnu.org/licenses/lgpl.html
 #
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root" 1>&2
+   exit 1
+fi
 apt-get -ym update
 apt-get -ym install apache2 apache2-doc apache2-utils
 apt-get -ym install libapache2-mod-php5 php5 php-pear php5-xcache
