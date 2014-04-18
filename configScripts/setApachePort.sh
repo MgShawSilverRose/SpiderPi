@@ -56,4 +56,5 @@ else
  fi
   mv -f /etc/apache2/sites-available/default.working.1 /etc/apache2/sites-available/default
 fi
+/etc/init.d/apache2 restart
 exit 0
